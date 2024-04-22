@@ -1,0 +1,45 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore the virtual environment directory
+venv/
+env/
+
+# Ignore local settings file (if used)
+*/local_settings.py
+
+# Ignore database files
+*.sqlite3
+
+# Ignore static files collected by Django's collectstatic command
+/staticfiles/
+
+# Ignore media files uploaded by users
+/media/
+
+# Ignore log files
+*.log
+
+# Ignore environment-specific settings
+.env
+
+# Ignore editor and IDE-specific files
+.vscode/
+.idea/
+*.sublime-*
+*.pyc
+
+# Ignore any compiled binaries or libraries
+*.o
+*.out
+*.dll
+*.so
+*.exe
+*.com
+*.dll
+*.drv
+*.lnk
+
+# Ignore Mac-specific files
+.DS_Store
