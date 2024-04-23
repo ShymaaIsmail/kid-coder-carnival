@@ -5,14 +5,17 @@
 # models.
 from django.db import models
 from .competition import Competition
-from .user import CustomUser
+from .user import User
 
 # This class represents a competition participant in a Python program.
 
 
 class CompetitionParticipant(models.Model):
+    class Meta:
+        db_table = 'competition_participant'
+
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     registration_date = models.DateTimeField(auto_now_add=True)
     submission_date = models.DateTimeField(null=True, blank=True)
     score = models.IntegerField(null=True, blank=True)

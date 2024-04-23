@@ -10,5 +10,8 @@ from .challenge import Challenge
 
 # This class likely represents a model for competition challenges in a Python application.
 class CompetitionChallenge(models.Model):
+    class Meta:
+        db_table = 'competition_challenge'
+
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE)

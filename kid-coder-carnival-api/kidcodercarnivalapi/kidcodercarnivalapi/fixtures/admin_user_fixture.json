@@ -1,0 +1,19 @@
+[
+  {
+      "model": "kidcodercarnivalapi.User",
+      "pk": 1,
+      "fields": {
+          "username": "admin",
+          "password": "pbkdf2_sha256$720000$yTXivlCkRzsvXmRqOOsFxY$qHiWlBJBWai4s49wHiz5xMGmXr1r2hDn1ViAAkBE2Ww=",
+          "email": "admin@admin.com",
+          "is_active": true,
+          "is_staff": true,
+          "is_superuser": true,
+          "first_name": "Admin",
+          "last_name": "User",
+          "date_joined": "2022-01-01T00:00:00Z",
+          "role": "admin",
+          "last_login": "2022-01-01T00:00:00Z"
+      }
+  }
+]

@@ -7,6 +7,8 @@ class Challenge(models.Model):
         ('mcq', 'Multiple Choice Question'),
         ('code', 'Code Challenge'),
     )
+    class Meta:
+        db_table = 'challenges'
 
     type = models.CharField(max_length=10, choices=TYPES)
     question = models.TextField()
