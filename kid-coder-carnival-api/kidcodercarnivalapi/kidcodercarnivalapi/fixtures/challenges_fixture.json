@@ -1,93 +1,122 @@
 [
-    {
-      "Challenge_ID": 1,
-      "Challenge_Type": "Fill in the Blank",
-      "Question": "Fill in the blank to complete the function to add two numbers: `def add(a, b): return ___________`",
-      "Options": "-",
-      "Correct_Answer": "return a + b"
-    },
-    {
-      "Challenge_ID": 2,
-      "Challenge_Type": "Multiple Choice",
-      "Question": "Which of the following prints \"Hello, World!\"?",
-      "Options": [
-        "Option A: `print(\"Hello, World!\")`",
-        "Option B: `print(\"Hello World!\")`",
-        "Option C: `print(\"Hello,World!\")`"
-      ],
-      "Correct_Answer": "Option A"
-    },
-    {
-      "Challenge_ID": 3,
-      "Challenge_Type": "Fill in the Blank",
-      "Question": "Fill in the blank to complete the function to find the maximum of two numbers: `def max(a, b): return ___________`",
-      "Options": "-",
-      "Correct_Answer": "return a if a > b else b"
-    },
-    {
-      "Challenge_ID": 4,
-      "Challenge_Type": "Multiple Choice",
-      "Question": "Which of the following correctly checks if a number is even?",
-      "Options": [
-        "Option A: `return num % 2 == 0`",
-        "Option B: `return num / 2 == 0`",
-        "Option C: `return num == 2`"
-      ],
-      "Correct_Answer": "Option A"
-    },
-    {
-      "Challenge_ID": 5,
-      "Challenge_Type": "Fill in the Blank",
-      "Question": "Fill in the blank to complete the function to count the number of vowels in a string: `def count_vowels(s): count = 0; vowels = \"aeiou\"; for char in s: if ________________: count += 1 return count",
-      "Options": "char in vowels",
-      "Correct_Answer": "Option A"
-    },
-    {
-      "Challenge_ID": 6,
-      "Challenge_Type": "Multiple Choice",
-      "Question": "Which loop correctly prints numbers from 1 to 10?",
-      "Options": [
-        "Option A: `for i in range(10): print(i+1)`",
-        "Option B: `for i in range(1, 11): print(i)`",
-        "Option C: `for i in range(1, 10): print(i)`"
-      ],
-      "Correct_Answer": "Option B"
-    },
-    {
-      "Challenge_ID": 7,
-      "Challenge_Type": "Fill in the Blank",
-      "Question": "Fill in the blank to complete the function to check if a string is a palindrome: `def is_palindrome(s): return ______________`",
-      "Options": "-",
-      "Correct_Answer": "s == s[::-1]"
-    },
-    {
-      "Challenge_ID": 8,
-      "Challenge_Type": "Multiple Choice",
-      "Question": "Which of the following correctly calculates the factorial of a number?",
-      "Options": [
-        "Option A: `fact = 1; for i in range(1, n+1): fact *= i; return fact`",
-        "Option B: `return 1 if n == 0 else n * factorial(n-1)`",
-        "Option C: `fact = n; while n > 1: fact *= n; n -= 1; return fact`"
-      ],
-      "Correct_Answer": "Option B"
-    },
-    {
-      "Challenge_ID": 9,
-      "Challenge_Type": "Fill in the Blank",
-      "Question": "Fill in the blank to complete the function to reverse a string: `def reverse_string(s): return ______________`",
-      "Options": "-",
-      "Correct_Answer": "s[::-1]"
-    },
-    {
-      "Challenge_ID": 10,
-      "Challenge_Type": "Multiple Choice",
-      "Question": "Which of the following correctly checks if a given year is a leap year?",
-      "Options": [
-        "Option A: `return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)`",
-        "Option B: `return year % 4 == 0`",
-        "Option C: `return year % 100 == 0 and year % 400 == 0`"
-      ],
-      "Correct_Answer": "Option A"
-    }
-  ]
-  
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 1,
+      "fields": {
+          "type": "Fill in the Blank",
+          "question": "Fill in the blank to complete the function to add two numbers: `def add(a, b): return ___________`",
+          "options": "-",
+          "correct_answer": "return a + b"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 2,
+      "fields": {
+          "type": "Multiple Choice",
+          "question": "Which of the following prints \"Hello, World!\"?",
+          "options": [
+              "Option A: `print(\"Hello, World!\")`",
+              "Option B: `print(\"Hello World!\")`",
+              "Option C: `print(\"Hello,World!\")`"
+          ],
+          "correct_answer": "Option A"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 3,
+      "fields": {
+          "type": "Fill in the Blank",
+          "question": "Fill in the blank to complete the function to find the maximum of two numbers: `def max(a, b): return ___________`",
+          "options": "-",
+          "correct_answer": "return a if a > b else b"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 4,
+      "fields": {
+          "type": "Multiple Choice",
+          "question": "Which of the following correctly checks if a number is even?",
+          "options": [
+              "Option A: `return num % 2 == 0`",
+              "Option B: `return num / 2 == 0`",
+              "Option C: `return num == 2`"
+          ],
+          "correct_answer": "Option A"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 5,
+      "fields": {
+          "type": "Fill in the Blank",
+          "question": "Fill in the blank to complete the function to count the number of vowels in a string: `def count_vowels(s): count = 0; vowels = \"aeiou\"; for char in s: if ________________: count += 1 return count",
+          "options": "char in vowels",
+          "correct_answer": "Option A"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 6,
+      "fields": {
+          "type": "Multiple Choice",
+          "question": "Which loop correctly prints numbers from 1 to 10?",
+          "options": [
+              "Option A: `for i in range(10): print(i+1)`",
+              "Option B: `for i in range(1, 11): print(i)`",
+              "Option C: `for i in range(1, 10): print(i)`"
+          ],
+          "correct_answer": "Option B"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 7,
+      "fields": {
+          "type": "Fill in the Blank",
+          "question": "Fill in the blank to complete the function to check if a string is a palindrome: `def is_palindrome(s): return ______________`",
+          "options": "-",
+          "correct_answer": "s == s[::-1]"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 8,
+      "fields": {
+          "type": "Multiple Choice",
+          "question": "Which of the following correctly calculates the factorial of a number?",
+          "options": [
+              "Option A: `fact = 1; for i in range(1, n+1): fact *= i; return fact`",
+              "Option B: `return 1 if n == 0 else n * factorial(n-1)`",
+              "Option C: `fact = n; while n > 1: fact *= n; n -= 1; return fact`"
+          ],
+          "correct_answer": "Option B"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 9,
+      "fields": {
+          "type": "Fill in the Blank",
+          "question": "Fill in the blank to complete the function to reverse a string: `def reverse_string(s): return ______________`",
+          "options": "-",
+          "correct_answer": "s[::-1]"
+      }
+  },
+  {
+      "model": "kidcodercarnivalapi.Challenge",
+      "pk": 10,
+      "fields": {
+          "type": "Multiple Choice",
+          "question": "Which of the following correctly checks if a given year is a leap year?",
+          "options": [
+              "Option A: `return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)`",
+              "Option B: `return year % 4 == 0`",
+              "Option C: `return year % 100 == 0 and year % 400 == 0`"
+          ],
+          "correct_answer": "Option A"
+      }
+  }
+]

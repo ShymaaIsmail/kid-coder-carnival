@@ -10,7 +10,7 @@ class Challenge(models.Model):
     class Meta:
         db_table = 'challenges'
 
-    type = models.CharField(max_length=10, choices=TYPES)
+    type = models.CharField(max_length=100, choices=TYPES)
     question = models.TextField()
     options = models.JSONField()
     correct_answer = models.CharField(max_length=100)
