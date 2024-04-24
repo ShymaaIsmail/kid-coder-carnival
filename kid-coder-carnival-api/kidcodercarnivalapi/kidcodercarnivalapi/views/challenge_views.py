@@ -4,9 +4,11 @@ from rest_framework import status
 from ..views.base_api_view import BaseAPIView
 from ..models import Challenge
 from ..serializers import ChallengeSerializer
+from rest_framework.permissions import AllowAny
 
 
-class ChallengeAPIView(APIView):
+class ChallengeAPIView(BaseAPIView):
+
     def get(self, request):
         challenges = Challenge.objects.all()
         serializer = ChallengeSerializer(challenges, many=True)
