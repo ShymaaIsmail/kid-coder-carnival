@@ -1,0 +1,1 @@
+from .custom_allow_permission import AllowUnauthenticatedForSomeAPIs

@@ -22,16 +22,16 @@ from django.urls import include, path
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-
 # Create schema view instance
 schema_view = get_schema_view(
     openapi.Info(
-        title="Your API",
+        title="Kid Coder Carnival API",
         default_version='v1',
-        description="Your API description",
-        terms_of_service="https://www.example.com/policies/terms/",
-        contact=openapi.Contact(email="contact@example.com"),
-        license=openapi.License(name="BSD License"),
+        extra="Shymaa M. Ismail",
+        description="Kid Coder Carnival API description",
+        terms_of_service="https://www.shymaaismai.tech",
+        contact=openapi.Contact(email="shymaa.m.ismail@gmail.com"),
+        license=openapi.License(name="ALX SWE Program- Cohort 18"),
     ),
     public=True,
 )
