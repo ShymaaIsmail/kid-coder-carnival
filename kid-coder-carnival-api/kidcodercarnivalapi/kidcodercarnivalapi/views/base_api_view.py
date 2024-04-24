@@ -1,8 +1,6 @@
-# views.py
-from django.views.generic import View
-from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
-# Base view class
-class BaseAPIView(View):
-    def __init__(self):
-        pass
+# Base Protected view class
+class BaseAPIView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminUser]

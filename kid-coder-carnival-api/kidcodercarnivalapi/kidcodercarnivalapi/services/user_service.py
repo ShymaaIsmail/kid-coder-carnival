@@ -8,7 +8,3 @@ class UserService:
         newuser.set_password(password)
         newuser.first_name = newuser.last_name = username
         newuser.save()
-
-    def get_user_data(self, user_id):
-        user = User.objects.get(pk=user_id)
-        return {'username': user.username}
