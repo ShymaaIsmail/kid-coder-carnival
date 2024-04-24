@@ -3,12 +3,7 @@ from .base_api_view import BaseAPIView
 from ..services.user_service import UserService
 
 class UserView(BaseAPIView):
-    """
-    User Detail View
 
-    Args:
-        BaseAPIView (_type_): _description_
-    """
     def  __init__(self):
         super().__init__()
         self.user_service = UserService()

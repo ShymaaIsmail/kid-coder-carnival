@@ -6,6 +6,7 @@
 # relationships, and constraints by defining Python classes that represent these database structures.
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from rest_framework.authtoken.models import Token
 
 # This class likely represents a user model that extends AbstractUser in a Python application.
 class User(AbstractUser):
