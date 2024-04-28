@@ -6,6 +6,9 @@ class AllowUnauthenticatedForSomeAPIs(BasePermission):
     and kid user register api
     """
 
-    def has_permission(self, request, view):
-        # Check if the request is for the Swagger UI URL(s)
-        return request.path.startswith('/swagger/')
+def has_permission(self, request, view):
+    paths_to_check = ['/swagger/', '/redoc/']  
+    for path in paths_to_check:
+        if request.path.startswith(path):
+            return True
+    return False

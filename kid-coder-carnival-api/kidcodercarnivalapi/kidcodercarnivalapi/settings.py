@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import datetime
 from dotenv import load_dotenv
 import os
 from pathlib import Path
@@ -161,3 +162,4 @@ SWAGGER_SETTINGS = {
 }
 
 CSRF_COOKIE_SECURE = False
+JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=3600)
