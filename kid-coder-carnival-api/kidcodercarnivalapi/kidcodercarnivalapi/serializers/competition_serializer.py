@@ -24,9 +24,8 @@ class CompetitionChallengeSerializer(serializers.ModelSerializer):
         fields = ['id', 'competition', 'challenge']
 
 class CompetitionSerializer(serializers.ModelSerializer):
-    challenges = CompetitionChallengeSerializer(many=True, read_only=True)
-    participants = CompetitionParticipantSerializer(many=True, read_only=True)
+    challenges = CompetitionChallengeSerializer(many=True, source='competition_challenges', required=False)
+    participants = CompetitionParticipantSerializer(many=True, source='competition_participants', required=False)
     class Meta:
         model = Competition
         fields = ['id', 'title', 'description', 'start_date', 'end_date', 'challenges', 'participants']
-

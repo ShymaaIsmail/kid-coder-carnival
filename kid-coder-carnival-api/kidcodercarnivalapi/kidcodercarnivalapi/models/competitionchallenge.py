@@ -13,5 +13,5 @@ class CompetitionChallenge(models.Model):
     class Meta:
         db_table = 'competition_challenge'
 
-    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE, related_name="competition_challenges")
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE)

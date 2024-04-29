@@ -4,7 +4,7 @@ from rest_framework import status
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from ..views.base_api_view import BaseAPIView
-from ..models import Competition, Challenge, User
+from ..models import Competition, Challenge, CompetitionChallenge
 from ..serializers.competition_serializer import CompetitionSerializer
 
 class CreateListCompetitionAPIView(BaseAPIView):
@@ -38,19 +38,25 @@ class AssignChallengeToCompetitionAPIView(BaseAPIView):
         competition = Competition.objects.get(id=competition_id)
         challenge_ids = request.data.get('challenge_ids', [])
         challenges = Challenge.objects.filter(id__in=challenge_ids)
-        competition.challenges.set(challenges)
+        # Clear existing challenges associated with the competition
+        competition.challenges.clear()
+        # Create new CompetitionChallenge instances for each selected challenge
+        for challenge in challenges:
+            CompetitionChallenge.objects.create(competition=competition, challenge=challenge)
         return Response({'message': 'Challenges assigned successfully'}, status=status.HTTP_200_OK)
 
 class ViewCompetitionDetailsAPIView(BaseAPIView):
     def get(self, request, competition_id):
-        competition = get_object_or_404(Competition.objects.prefetch_related('competitionchallenge_set__challenge'), id=competition_id)
-        competition.challenges.set(competition.challenges.all())
+        competition = get_object_or_404(Competition.objects.prefetch_related('competition_challenges'), id=competition_id)
+        print(vars(competition))
         serializer = CompetitionSerializer(competition)
-        return Response(serializer.data)
+        serialized_data = serializer.data.copy()
+        serialized_data.pop("participants", None)
+        return Response(serialized_data)
 
 
 class ViewCompetitionParticipantsAPIView(BaseAPIView):
     def get(self, request, competition_id):
         competition = get_object_or_404(Competition.objects.prefetch_related('competition_participants'), id=competition_id)
         serializer = CompetitionSerializer(competition)
-        return Response(serializer.data)
+        return Response(serializer.data["participants"])
