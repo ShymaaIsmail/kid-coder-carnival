@@ -14,7 +14,7 @@ class CompetitionParticipant(models.Model):
     class Meta:
         db_table = 'competition_participant'
 
-    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE, related_name="competition_participants")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     registration_date = models.DateTimeField(auto_now_add=True)
     submission_date = models.DateTimeField(null=True, blank=True)

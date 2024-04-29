@@ -23,8 +23,8 @@ class Competition(models.Model):
     end_date = models.DateTimeField()
 
     # Define ManyToManyField for challenges and participants
-    challenges = models.ManyToManyField(Challenge, related_name='competitions')
-    participants = models.ManyToManyField(User, related_name='competitions')
+    challenges = models.ManyToManyField(Challenge, related_name='challenges')
+    participants = models.ManyToManyField(User, related_name='participants')
 
     def __str__(self):
         return self.title

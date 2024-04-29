@@ -43,9 +43,14 @@ class AssignChallengeToCompetitionAPIView(BaseAPIView):
 
 class ViewCompetitionDetailsAPIView(BaseAPIView):
     def get(self, request, competition_id):
-        competition = get_object_or_404(Competition.objects.prefetch_related('competitionchallenge_set__challenge',
-                                                            'competitionparticipant_set__user'), id=competition_id)
+        competition = get_object_or_404(Competition.objects.prefetch_related('competitionchallenge_set__challenge'), id=competition_id)
         competition.challenges.set(competition.challenges.all())
-        competition.participants.set(competition.participants.all())
+        serializer = CompetitionSerializer(competition)
+        return Response(serializer.data)
+
+
+class ViewCompetitionParticipantsAPIView(BaseAPIView):
+    def get(self, request, competition_id):
+        competition = get_object_or_404(Competition.objects.prefetch_related('competition_participants'), id=competition_id)
         serializer = CompetitionSerializer(competition)
         return Response(serializer.data)
