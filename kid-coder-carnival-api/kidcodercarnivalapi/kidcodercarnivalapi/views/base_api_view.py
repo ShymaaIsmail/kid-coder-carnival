@@ -3,4 +3,4 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 # Base Protected view class
 class BaseAPIView(APIView):
-    pass
+    permission_classes = [IsAuthenticated, IsAdminUser]
