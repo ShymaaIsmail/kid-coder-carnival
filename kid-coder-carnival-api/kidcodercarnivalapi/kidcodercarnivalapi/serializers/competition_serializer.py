@@ -1,14 +1,10 @@
 from rest_framework import serializers
-
 from .challenge_serializer import ChallengeSerializer
-from ..models import Competition, CompetitionChallenge, CompetitionParticipant, User
+from .user_serializer import UserSerializer
+from ..models import Competition, CompetitionChallenge, CompetitionParticipant
 
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_joined', 'last_login']
 class CompetitionParticipantSerializer(serializers.ModelSerializer):
     competition = serializers.PrimaryKeyRelatedField(read_only=True)
     user = UserSerializer(read_only=True)
