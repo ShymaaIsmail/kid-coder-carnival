@@ -16,10 +16,10 @@ class NewCurrentCompetitionList(BaseKidView):
             ).values_list(
                 'competition_id', flat=True
                 )
-        print(enrolled_competitions)
         competitions = Competition.objects.filter(
             start_date__date__lte=today,
-            end_date__date__gte=today
+            end_date__date__gte=today,
+            is_complete= False
             ).exclude(
             id__in=enrolled_competitions
         ).distinct()
@@ -47,3 +47,47 @@ class CreateCompetitionParticipant(BaseKidView):
             CompetitionParticipant.objects.create(competition=competition, user=request.user)
             return Response({'message': f'You are now participated in Competition {competition.title}'}, status=status.HTTP_200_OK)
 
+class  InProgressCompetitionList(BaseKidView):
+    def get(self, request):
+        enrolled_competitions = CompetitionParticipant.objects.filter(
+            user_id= request.user.id
+            ).values_list(
+                'competition_id', flat=True
+            )
+        competitions = Competition.objects.filter(
+            is_complete= False,
+            id__in=enrolled_competitions
+            ).distinct()
+        serializer = CompetitionSerializer(competitions, many=True)
+        return Response(serializer.data)
+
+
+class  CompletedCompetitionList(BaseKidView):
+    def get(self, request):
+        enrolled_competitions = CompetitionParticipant.objects.filter(
+            user_id= request.user.id
+            ).values_list(
+                'competition_id', flat=True
+            )
+        competitions = Competition.objects.filter(
+            is_complete= True,
+            id__in=enrolled_competitions
+            ).distinct()
+        serializer = CompetitionSerializer(competitions, many=True)
+        return Response(serializer.data)
+
+class  StartCompetition(BaseKidView):
+    def get(self, request, competition_id):
+        already_enrolled = get_object_or_404(CompetitionParticipant, user_id= request.user.id,
+        competition_id= competition_id)
+        if (already_enrolled):
+            competition = get_object_or_404(Competition.objects.prefetch_related('competition_challenges'),
+                                            id=competition_id, is_complete= False)
+            serializer = CompetitionSerializer(competition)
+            serialized_data = serializer.data.copy()
+            serialized_data.pop("participants", None)
+            return Response(serialized_data)
+
+class  SubmitCompetition(BaseKidView):
+    def post(self, request):
+        pass

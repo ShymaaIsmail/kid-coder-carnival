@@ -21,6 +21,7 @@ class Competition(models.Model):
     description = models.TextField()
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
+    is_complete = models.BooleanField(default=False)
 
     # Define ManyToManyField for challenges and participants
     challenges = models.ManyToManyField(Challenge, related_name='challenges')
