@@ -6,9 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'sphinx-docs'
-copyright = '2024, shymaamismail'
-author = 'shymaamismail'
+project = 'kids-coder-carnival'
+copyright = '2024, Shymaa Mohamed Ismail'
+author = 'Shymaa Mohamed Ismail'
+release = 'v1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -17,6 +18,7 @@ extensions = []
 
 templates_path = ['_templates']
 exclude_patterns = []
+
 
 
 # -- Options for HTML output -------------------------------------------------

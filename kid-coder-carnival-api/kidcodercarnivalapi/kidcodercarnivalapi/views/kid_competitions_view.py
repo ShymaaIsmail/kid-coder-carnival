@@ -1,4 +1,4 @@
-from datetime import date
+from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
@@ -10,15 +10,16 @@ from ..serializers.competition_serializer import CompetitionSerializer
 
 class NewCurrentCompetitionList(BaseKidView):
     def get(self, request):
-        today = date.today()
+        today = timezone.now().date()
         enrolled_competitions = CompetitionParticipant.objects.filter(
             user_id= request.user.id
             ).values_list(
                 'competition_id', flat=True
                 )
+        print(enrolled_competitions)
         competitions = Competition.objects.filter(
-            start_date__gte= today,
-            end_date__lte= today
+            start_date__date__lte=today,
+            end_date__date__gte=today
             ).exclude(
             id__in=enrolled_competitions
         ).distinct()
