@@ -38,11 +38,15 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    # Admin APIs
     path('admin/', admin.site.urls),
     path('auth/', include('kidcodercarnivalapi.api_urls.auth_urls')),
     path('profile/', include('kidcodercarnivalapi.api_urls.profile_urls')),
     path('competitions/', include('kidcodercarnivalapi.api_urls.competitions_urls')),
     path('challenges/', include('kidcodercarnivalapi.api_urls.challenges_urls')),
+    # Kids APIs
+    path('kids/', include('kidcodercarnivalapi.api_urls.kids_competitions_urls')),
+    # Documentation
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
