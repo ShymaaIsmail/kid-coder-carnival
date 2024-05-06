@@ -4,7 +4,7 @@ from rest_framework import status
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from .base_admin_view import BaseAdminView
-from ..models import Competition, Challenge, CompetitionChallenge
+from ..models import Competition, Challenge, CompetitionChallenge, CompetitionParticipant
 from ..serializers.competition_serializer import CompetitionSerializer
 
 class CreateListCompetitionAPIView(BaseAdminView):
@@ -59,3 +59,28 @@ class ViewCompetitionParticipantsAPIView(BaseAdminView):
         competition = get_object_or_404(Competition.objects.prefetch_related('competition_participants'), id=competition_id)
         serializer = CompetitionSerializer(competition)
         return Response(serializer.data["participants"])
+
+class CompleteRankingCompetitionAPIView(BaseAdminView):
+    def post(self, request, competition_id):
+        # Update is_complete field using update() method
+        competition = get_object_or_404(Competition, id=competition_id)
+        # Set the competition as complete
+        competition.is_complete = True
+        competition.save()
+        # Fetch participants with competition object prefetched
+        participants = (
+            CompetitionParticipant.objects
+            .select_related('competition')
+            .filter(competition_id=competition_id)
+            .order_by('-score')
+        )
+        # Bulk update participant ranks
+        rank_update_query = []
+        for rank, participant in enumerate(participants, start=1):
+            rank_update_query.append(
+                CompetitionParticipant(id=participant.id, rank=rank)
+            )
+        CompetitionParticipant.objects.bulk_update(rank_update_query, ['rank'])
+        # Serialize necessary data fields
+        serializer = CompetitionSerializer(competition)
+        return Response(serializer.data, status=status.HTTP_200_OK)

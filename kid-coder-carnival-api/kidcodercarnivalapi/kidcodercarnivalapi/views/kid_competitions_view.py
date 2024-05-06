@@ -24,7 +24,7 @@ class NewCurrentCompetitionList(BaseKidView):
             ).exclude(
             id__in=enrolled_competitions
         ).distinct()
-        serializer = CompetitionSerializer(competitions, many=True)
+        serializer = CompetitionSerializer(competitions, many=True, context={'request': request})
         return Response(serializer.data)
 
 class CreateCompetitionParticipant(BaseKidView):
@@ -59,7 +59,7 @@ class  InProgressCompetitionList(BaseKidView):
             is_complete= False,
             id__in=enrolled_competitions
             ).distinct()
-        serializer = CompetitionSerializer(competitions, many=True)
+        serializer = CompetitionSerializer(competitions, many=True, context={'request': request})
         return Response(serializer.data)
 
 
@@ -74,7 +74,7 @@ class  CompletedCompetitionList(BaseKidView):
             is_complete= True,
             id__in=enrolled_competitions
             ).distinct()
-        serializer = CompetitionSerializer(competitions, many=True)
+        serializer = CompetitionSerializer(competitions, many=True, context={'request': request})
         return Response(serializer.data)
 
 class  StartCompetition(BaseKidView):
@@ -84,8 +84,8 @@ class  StartCompetition(BaseKidView):
         if (already_enrolled):
             competition = get_object_or_404(Competition.objects.prefetch_related('competition_challenges'),
                                             id=competition_id, is_complete= False)
-            serializer = CompetitionSerializer(competition)
-            return Response(serializer)
+            serializer = CompetitionSerializer(competition, context={'request': request})
+            return Response(serializer.data)
 
 class  SubmitCompetition(BaseKidView):
     @swagger_auto_schema(
@@ -111,7 +111,8 @@ class  SubmitCompetition(BaseKidView):
         competition = get_object_or_404(Competition.objects.prefetch_related('competition_challenges'), id=competition_id)
         # Get the participant record
         participant = CompetitionParticipant.objects.get(competition=competition, user_id=kid_id)
-        if participant is not None and participant.submission_date is None:
+        if competition.is_complete is False and \
+            participant is not None and participant.submission_date is None:
             # Initialize score and maximum possible score
             score = 0
             max_score = competition.competition_challenges.count()  # Count the number of challenges
