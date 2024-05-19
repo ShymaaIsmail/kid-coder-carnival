@@ -99,8 +99,8 @@ jobs:
             python3 manage.py loaddata admin_user_fixture.json
             python3 manage.py loaddata challenges_fixture.json
             python3 manage.py collectstatic --noinput
-            sudo lsof -t -i :8000 | xargs kill -9
-            gunicorn  --log-level debug --bind 0.0.0.0:8000 kidcodercarnivalapi.wsgi:application
+            # sudo lsof -t -i :8000 | xargs kill -9
+            # gunicorn -w 4 --log-level debug --bind 0.0.0.0:8000 kidcodercarnivalapi.wsgi:application
 
 
 
