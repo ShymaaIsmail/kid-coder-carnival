@@ -13,6 +13,15 @@ import datetime
 from dotenv import load_dotenv
 import os
 from pathlib import Path
+# Define a function to get the base URL dynamically
+def get_base_url(request):
+    # Get the current host
+    current_host = request.get_host()
+    # Construct the base URL based on the current host
+    base_url = f"https://{current_host}/kids-coder-api/"
+    return base_url
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -163,6 +172,7 @@ SWAGGER_SETTINGS = {
             'in': 'header',
         },
     },
+    'BASE_PATH': get_base_url,
 }
 
 CSRF_COOKIE_SECURE = False
