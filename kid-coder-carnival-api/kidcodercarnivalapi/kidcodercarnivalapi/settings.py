@@ -172,7 +172,7 @@ SWAGGER_SETTINGS = {
             'in': 'header',
         },
     },
-    'BASE_PATH': "https://shymaaismail.tech/kids-coder-api/",
+    'BASE_PATH': get_base_url,
 }
 
 CSRF_COOKIE_SECURE = False
