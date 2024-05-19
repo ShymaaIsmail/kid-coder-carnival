@@ -167,7 +167,7 @@ SWAGGER_SETTINGS = {
 
 CSRF_COOKIE_SECURE = False
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=3600)
-CORS_ORIGIN_WHITELIST = [
+CORS_ALLOWED_ORIGINS = [
     'https://shymaaismail.tech',
     # Add other origins as needed
 ]
