@@ -174,7 +174,8 @@ SWAGGER_SETTINGS = {
     },
     'DEFAULT_API_URL': 'https://shymaaismail.tech/kids-coder-api/',
  }
-
+# Swagger setting
+FORCE_SCRIPT_NAME = '/kids-coder-api'
 CSRF_COOKIE_SECURE = False
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=3600)
 CORS_ALLOWED_ORIGINS = [
