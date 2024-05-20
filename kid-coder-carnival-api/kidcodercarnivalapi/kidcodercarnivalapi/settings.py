@@ -172,8 +172,8 @@ SWAGGER_SETTINGS = {
             'in': 'header',
         },
     },
-    'BASE_PATH': get_base_url,
-}
+    'DEFAULT_API_URL': 'https://shymaaismail.tech/kids-coder-api/',
+ }
 
 CSRF_COOKIE_SECURE = False
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=3600)
