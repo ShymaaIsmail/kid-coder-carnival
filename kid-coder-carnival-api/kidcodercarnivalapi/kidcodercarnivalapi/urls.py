@@ -34,6 +34,8 @@ schema_view = get_schema_view(
         license=openapi.License(name="Shymaa Mohamed Ismail -ALX SWE Program- Cohort 18"),
     ),
     public=True,
+    url='https://shymaaismail.tech/kids-coder-api/',  # This sets the base URL for the API
+
 )
 
 
