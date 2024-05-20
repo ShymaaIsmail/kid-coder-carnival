@@ -179,5 +179,8 @@ CSRF_COOKIE_SECURE = False
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=3600)
 CORS_ALLOWED_ORIGINS = [
     'https://shymaaismail.tech',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
     # Add other origins as needed
 ]
+CORS_ALLOW_CREDENTIALS = True 
