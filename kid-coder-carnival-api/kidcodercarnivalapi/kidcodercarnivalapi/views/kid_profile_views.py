@@ -17,7 +17,6 @@ class KidProfileView(BaseKidView):
     )
     def get(self, request):
         user_id = request.user.id
-        print(user_id)
         user_profile = get_object_or_404(User, id= user_id)
         serializer = UserSerializer(user_profile)
         return Response(serializer.data)

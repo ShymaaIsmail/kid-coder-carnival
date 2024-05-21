@@ -116,7 +116,6 @@ class  SubmitCompetition(BaseKidView):
             # Initialize score and maximum possible score
             score = 0
             max_score = competition.competition_challenges.count()  # Count the number of challenges
-            print(max_score)
             # Iterate over each challenge ID and answer
             for answer in answers:
                 challenge_id = answer.get('challenge_id')
